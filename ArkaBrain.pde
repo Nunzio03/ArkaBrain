@@ -1,9 +1,10 @@
 
 //SETTINGS
-int SCALINGFACTOR = 1;
+int SCALINGFACTOR = 2;
 int FIRSTGENERATION = 8000;
 int OTHERGENERATION = 600;
 float MUTATIONRATE = 0.25;
+
 
 
 Table tavolo = new Table(200/SCALINGFACTOR,100/SCALINGFACTOR,2700/SCALINGFACTOR,1500/SCALINGFACTOR);
@@ -75,8 +76,8 @@ void spawnGeneration(int n){
 
   for(int i=0; i<=n; i++){
     pool.add(new Bar((int)tavolo.topLeftCorner.x+tavolo.lengthX/2,
-       (int)tavolo.topLeftCorner.y+tavolo.lengthY-50/4,
-       200/4, 50/4,
+       (int)tavolo.topLeftCorner.y+tavolo.lengthY-50/SCALINGFACTOR,
+       200/SCALINGFACTOR, 50/SCALINGFACTOR,
        0, 255,  0,
        tavolo));
   }
@@ -89,8 +90,8 @@ void spawnGeneration(int n, Bar best, float mutationRate){
     NeuralNetwork bestBrain = best.brain.copy();
     bestBrain.mutate(mutationRate);
     Bar nuovo = new Bar((int)tavolo.topLeftCorner.x+tavolo.lengthX/2,
-       (int)tavolo.topLeftCorner.y+tavolo.lengthY-50/4,
-       200/4, 50/4,
+       (int)tavolo.topLeftCorner.y+tavolo.lengthY-50/SCALINGFACTOR,
+       200/SCALINGFACTOR, 50/SCALINGFACTOR,
        0, 255,  0,
        tavolo);
     nuovo.mountBrain(bestBrain);
